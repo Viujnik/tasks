@@ -1,4 +1,4 @@
-from models import FileSource, ConsoleSource, APISource, TasksGiver
+from src.models import FileSource, ConsoleSource, APISource, TasksGiver
 
 
 def give_engine():
@@ -9,4 +9,5 @@ def give_engine():
             for task in tasks.get_tasks():
                 print(tasks.printf_task(task))
 
-give_engine()
+if __name__ == "__main__":
+    give_engine()
