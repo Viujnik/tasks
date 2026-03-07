@@ -8,6 +8,9 @@ SOURCES = [FileSource, ConsoleSource, APISource]
 class TestSourceStructure:
     @pytest.mark.parametrize("source_class", SOURCES)
     def test_get_tasks(self, source_class, monkeypatch):
+        """
+        Проверяет соответствие контракту и типы созданных task'ов.
+        """
         monkeypatch.setattr("builtins.input", lambda _: "test_command")
         source = source_class()
         tasks = source.get_tasks()
@@ -15,6 +18,9 @@ class TestSourceStructure:
         assert all(isinstance(task, Task) for task in tasks)
 
     def test_api_source_printf(self):
+        """
+        Проверяет вывод api task'и.
+        """
         source = APISource()
         task = Task(id=1, type="api", payload={
             "client_id": 123, "HTTP_METHOD": "GET",
@@ -27,6 +33,9 @@ class TestSourceStructure:
         assert "https://test.com" in output
 
     def test_file_source_printf(self):
+        """
+        Проверяет вывод file task'и.
+        """
         source = FileSource()
         task = Task(id=777, type="file", payload={
             "sender_id": 111,
@@ -43,6 +52,9 @@ class TestSourceStructure:
         assert "222" in output
 
     def test_console_source_printf(self):
+        """
+        Проверяет вывод console task'и.
+        """
         source = ConsoleSource()
         task = Task(id=999, type="console", payload={
             "sender_id": 444,

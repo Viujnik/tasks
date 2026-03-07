@@ -1,7 +1,8 @@
 from src.models import FileSource, ConsoleSource, APISource, TasksGiver
 
 
-def give_engine():
+def give_engine() -> None:
+    """Выводит информацию о каждой таске всех видов"""
     sources = [FileSource(), ConsoleSource(), APISource()]
     for source in sources:
         tasks = source
