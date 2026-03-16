@@ -1,6 +1,7 @@
 import pytest
-
-from src.models import FileSource, ConsoleSource, APISource, TasksGiver, Task
+from src.protocols import TasksGiver
+from src.tasks_model import Task
+from src.sources import FileSource, ConsoleSource, APISource
 
 SOURCES = [FileSource, ConsoleSource, APISource]
 

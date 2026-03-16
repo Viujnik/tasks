@@ -1,32 +1,5 @@
 import random
-from dataclasses import dataclass
-from typing import Protocol, runtime_checkable
-
-
-@dataclass
-class Task:
-    """Класс Task"""
-    id: int
-    type: str
-    payload: dict
-
-
-@runtime_checkable
-class TasksGiver(Protocol):
-    """
-    Контракт для источников task'ов.
-    """
-
-    def get_tasks(self) -> list[Task]:
-        """
-        Создает список из 5 task'ов соответствующего вида, созданных заранее.
-        """
-        pass
-    def printf_task(self, task: Task) -> None:
-        """
-        Выводит форматированную информацию task'и.
-        """
-        pass
+from src.tasks_model import Task
 
 
 class FileSource:

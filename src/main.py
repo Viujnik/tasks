@@ -1,4 +1,5 @@
-from src.models import FileSource, ConsoleSource, APISource, TasksGiver
+from src.sources import FileSource, ConsoleSource, APISource
+from src.protocols import TasksGiver
 
 
 def give_engine() -> None:
